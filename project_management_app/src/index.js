@@ -12,21 +12,41 @@ class Container extends React.Component {
 
   render () {
     return (
-    <button className = "newProject" onClick={() => {
-      //TODO: implement create new project button
-    }}>
-      New Project
-    </button>
+    <fieldset className="Container">
+      <legend>Project Management App</legend>
+      <p>Sign up with an email to get started!</p>
+      <p>{newSignUpButton()}</p>
+    </fieldset>
     );
   }
 }
 
-function newProject(props) {
+function newProjectButton() {
   return (
     <button className = "newProject" onClick={() => {
-      //TODO: implement create new project button
+      //TODO: add project button behavior
     }}>
-      New Project
+      New Project...
+    </button>
+  )
+}
+
+function newProfilePhotoButton() {
+  return (
+    <button className = "newProfilePhoto" onClick={() => {
+      //TODO: add profile photo button behavior
+    }}>
+      New Profile Photo...
+    </button>
+  )
+}
+
+function newSignUpButton() {
+  return (
+    <button className = "newSignUp" onClick={() => {
+      //TODO: add sign up button behavior
+    }}>
+      Sign Up
     </button>
   )
 }

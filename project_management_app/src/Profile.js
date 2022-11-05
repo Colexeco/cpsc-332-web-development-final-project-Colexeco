@@ -11,16 +11,7 @@ import './index.css';
           profilePhoto: null 
         };
       }
-    
-      newSignUpButton() {
-        return (
-          <button className = "newSignUp" onClick={() => {
-          }}>
-            Sign Up
-          </button>
-        )
-      }
-    
+
       newProfilePhotoButton() {
         return (
           <button className = "newProfilePhoto" onClick={() => {

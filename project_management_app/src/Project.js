@@ -1,8 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useState } from 'react';
 import './index.css';
 
 export class Project extends React.Component {
+    //const [task, setTasks] = useState([])
+
     constructor(props) {
       super (props);
       this.state = {

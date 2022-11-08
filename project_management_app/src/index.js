@@ -28,7 +28,7 @@ class Profile extends React.Component{
         <p>Upload a profile photo...</p>
         <input type="file" className="newProfile" accept="image/*" />
         <input type="submit" className="newProfile" onClick={ () => {
-          root.render(<Project/>)
+          root.render(<NewProject/>)
         }
         }/>
       </form>
@@ -37,9 +37,7 @@ class Profile extends React.Component{
   }
 };
 
-class Project extends React.Component {
-  //const [task, setTasks] = useState([])
-
+class NewProject extends React.Component {
   constructor(props) {
     super (props);
     this.state = {
@@ -49,11 +47,56 @@ class Project extends React.Component {
   
   render() {
     return (
-      <button className = "newProject" onClick={() => {
+      <button className = "NewProject" onClick={() => {
         //TODO: add project button behavior
+        root.render(<Project/>)
       }}>
         New Project...
       </button>
+    )
+  }
+};
+
+class Project extends React.Component {
+  constructor(props) {
+    super (props);
+
+    this.state = {
+      showdata : this.displayData,
+      postVal : ""
+    };
+  
+  }
+  
+  render() {
+    return (
+      <>
+      <textarea className="Project">
+        Title
+      </textarea>
+      <textarea className="Project">
+        Description
+      </textarea>
+      <p className="Project">Deadline</p>
+      <input type="date" className="Project">
+      </input>
+      <button onClick={() => {
+        root.render(
+        <>
+        <label for="date">Deadline: </label>
+        <input type="date" name="date" className="Project"></input>
+
+        <label for="description">Description: </label>
+        <textarea name="Description" className="Project">Task</textarea>
+
+        <label for="completed">Completed?</label>
+        <input type="checkbox" name="completed" className="Project"></input>
+
+        <button type="submit" className="Project">Save</button>
+        </>
+        )
+      }}>Add task..</button>
+      </>
     )
   }
 };

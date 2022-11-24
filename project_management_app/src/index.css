@@ -1,14 +1,6 @@
-.Container {
-  display:flex;
-  flex-direction:column;
-}
-
-.newProfile {
-  display: flex;
-  flex-direction: column;
-}
-
-.Project {
-  display: flex;
-  flex-direction: column;
+.page-wrap {
+    display: flex;
+    flex-direction: column;
+    margin:0 auto;
+    width: 800px;
 }

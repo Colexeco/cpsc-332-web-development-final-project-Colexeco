@@ -22,16 +22,18 @@ class Profile extends React.Component{
   render() {
     return (
       <>
-      <textarea className="newProfile">Email</textarea>
-      <textarea className="newProfile">Pasword</textarea>
+      <div className="page-wrap">
+      <textarea>Email</textarea>
+      <textarea>Pasword</textarea>
       <form>
-        <p>Upload a profile photo...</p>
-        <input type="file" className="newProfile" accept="image/*" />
-        <input type="submit" className="newProfile" onClick={ () => {
-          root.render(<NewProject/>)
-        }
-        }/>
+      <p>Upload a profile photo...</p>
+      <input type="file" accept="image/*" />
+      <input type="submit" onClick={ () => {
+        root.render(<NewProject/>)
+      }
+      }/>
       </form>
+      </div>
       </>
     )
   }
@@ -47,12 +49,14 @@ class NewProject extends React.Component {
   
   render() {
     return (
-      <button className = "NewProject" onClick={() => {
+      <div className="page-wrap">
+      <button onClick={() => {
         //TODO: add project button behavior
         root.render(<Project/>)
       }}>
         New Project...
       </button>
+      </div>
     )
   }
 };
@@ -71,31 +75,35 @@ class Project extends React.Component {
   render() {
     return (
       <>
-      <textarea className="Project">
+      <div className="page-wrap">
+      <textarea>
         Title
       </textarea>
-      <textarea className="Project">
+      <textarea>
         Description
       </textarea>
-      <p className="Project">Deadline</p>
-      <input type="date" className="Project">
+      <p>Deadline</p>
+      <input type="date">
       </input>
       <button onClick={() => {
-        root.render(
-        <>
-        <label for="date">Deadline: </label>
-        <input type="date" name="date" className="Project"></input>
+      root.render(
+      <>
+      <div className="page-wrap">
+      <label for="date">Deadline: </label>
+      <input type="date" name="date"></input>
 
-        <label for="description">Description: </label>
-        <textarea name="Description" className="Project">Task</textarea>
+      <label for="description">Description: </label>
+      <textarea name="Description">Task</textarea>
 
-        <label for="completed">Completed?</label>
-        <input type="checkbox" name="completed" className="Project"></input>
+      <label for="completed">Completed?</label>
+      <input type="checkbox" name="completed"></input>
 
-        <button type="submit" className="Project">Save</button>
+      <button type="submit">Save</button>
+      </div>
         </>
         )
       }}>Add task..</button>
+      </div>
       </>
     )
   }
@@ -110,7 +118,7 @@ class Container extends React.Component {
   }
   render () {
     return (
-    <fieldset className="Container">
+    <fieldset className="page-wrap">
       <legend>Project Management App</legend>
       <p>Sign up with an email to get started!</p>
       <p><button className = "newSignUp" onClick={() => {

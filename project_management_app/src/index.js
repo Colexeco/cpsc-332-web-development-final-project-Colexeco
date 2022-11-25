@@ -22,9 +22,9 @@ class Profile extends React.Component{
   render() {
     return (
       <>
-      <div className="page-wrap">
+      <div className="page-wrap"> 
       <textarea>Email</textarea>
-      <textarea>Pasword</textarea>
+      <textarea>Password</textarea>
       <form>
       <p>Upload a profile photo...</p>
       <input type="file" accept="image/*" />
@@ -112,15 +112,30 @@ class Project extends React.Component {
 class Container extends React.Component {
   constructor(props) {
     super (props);
+    this.state = { apiResponse: "" };
     this.state = {
       //deadline: 
     };
   }
+  //the 2 methods below are from
+  //https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c/
+  callAPI() {
+    fetch("http://localhost:9000/testAPI")
+        .then(res => res.text())
+        .then(res => this.setState({ apiResponse: res }))
+        .catch(err => err);
+  }
+
+  componentDidMount() {
+    this.callAPI();
+  }
+
   render () {
     return (
     <fieldset className="page-wrap">
       <legend>Project Management App</legend>
       <p>Sign up with an email to get started!</p>
+      <p>{this.state.apiResponse}</p>
       <p><button className = "newSignUp" onClick={() => {
         root.render(<Profile/>)
       }}>
@@ -129,7 +144,9 @@ class Container extends React.Component {
     </fieldset>
     );
   }
+
 }
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Container/>);

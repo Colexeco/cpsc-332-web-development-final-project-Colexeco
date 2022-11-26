@@ -70,4 +70,9 @@ const taskSchema = new mongoose.Schema({
   completed : Boolean,
 })
 
+const credentialResult = mongoose.model("credentialResult", userCredentials);
+const photolResult = mongoose.model("userProfilePhoto", userProfilePhoto);
+const projectResult = mongoose.model("projectSchema", projectSchema);
+const taskResult = mongoose.model("taskSchema", taskSchema);
+
 module.exports = app;

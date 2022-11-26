@@ -45,10 +45,29 @@ app.listen(8080, function () {
 
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+const userCredentials = new mongoose.Schema({
   email: String,
   password: String,
-  profilePhoto: Mixed,
+});
+
+const userProfilePhoto = new mongoose.Schema({
+  image : {
+    data: Buffer,
+    contentType: String,
+  }
+});
+
+const projectSchema = new mongoose.Schema({
+  title : String,
+  description : String,
+  deadline : Date,
+})
+
+const taskSchema = new mongoose.Schema({
+  title : String,
+  description : String,
+  deadline : Date,
+  completed : Boolean,
 })
 
 module.exports = app;

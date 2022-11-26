@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
@@ -117,36 +117,6 @@ class Project extends React.Component {
     )
   }
 };
-
-// class Task extends React.component {
-//   constructor(props) {
-//     super (props);
-//     this.state = {
-//       Deadline : "",
-//       Title : "",
-//       Description : "",
-//     };
-//   }
-
-//   render () {
-//     return (
-//       <>
-//       <div className="page-wrap">
-//       <label className="input" for="date">Deadline: </label>
-//       <input className="input" type="date" name="date"></input>
-
-//       <label className="input" for="Description">Description: </label>
-//       <input type="text" className="input" name="Description"/>
-
-//       <label className="input" for="completed">Completed?</label>
-//       <input className="input" type="checkbox" name="completed"/>
-
-//       <button className="button" type="submit">Save</button>
-//       </div>
-//         </>
-//     )
-//   }
-// }
 
 class Container extends React.Component {
   constructor(props) {

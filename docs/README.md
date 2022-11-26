@@ -4,10 +4,10 @@
 This is a lightweight project management web app with an emphasis on progress tracking via individual tasks.  
 
 ### Table of Contents  
-docs contains report, project_management_app contains the react app
+docs contains report, project_management_app contains the front end, backend contains backend
 
 ### Installation
-This project requires npm and React to be downloaded locally to work.
+This project requires npm on the machine which it is running. Navigate to both the front and back end directories and run `npm install` within both of them upon cloning this repository to install all required dependencies. Then run `npm start` in both directories to start the application in your default browser.
 
 ### Usage
 Anyone can use this app.

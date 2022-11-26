@@ -22,13 +22,19 @@ class Profile extends React.Component{
   render() {
     return (
       <>
-      <div className="page-wrap"> 
-      <textarea>Email</textarea>
-      <textarea>Password</textarea>
+      <div className="page-wrap">
       <form>
+      <div>
+      <label htmlFor="Email">Email</label>
+      <input id="Email" type="text"/>
+      </div>
+      <div>
+      <label htmlFor="Password">Password</label>
+      <input id="Password" type="text"/>
+      </div>
       <p>Upload a profile photo...</p>
       <input type="file" accept="image/*" />
-      <input type="submit" onClick={ () => {
+      <input className="button" type="submit" onClick={ () => {
         root.render(<NewProject/>)
       }
       }/>
@@ -50,7 +56,7 @@ class NewProject extends React.Component {
   render() {
     return (
       <div className="page-wrap">
-      <button onClick={() => {
+      <button className="button" onClick={() => {
         //TODO: add project button behavior
         root.render(<Project/>)
       }}>
@@ -67,7 +73,10 @@ class Project extends React.Component {
 
     this.state = {
       showdata : this.displayData,
-      postVal : ""
+      postVal : "",
+      Deadline : "",
+      Title : "",
+      Description : "",
     };
   
   }
@@ -89,16 +98,16 @@ class Project extends React.Component {
       root.render(
       <>
       <div className="page-wrap">
-      <label for="date">Deadline: </label>
-      <input type="date" name="date"></input>
+      <label className="input" for="date">Deadline: </label>
+      <input className="input" type="date" name="date"></input>
 
-      <label for="description">Description: </label>
-      <textarea name="Description">Task</textarea>
+      <label className="input" for="Description">Description: </label>
+      <input type="text" className="input" name="Description"/>
 
-      <label for="completed">Completed?</label>
-      <input type="checkbox" name="completed"></input>
+      <label className="input" for="completed">Completed?</label>
+      <input className="input" type="checkbox" name="completed"/>
 
-      <button type="submit">Save</button>
+      <button className="button" type="submit" onClick={() => {root.render(<Project/>)}}>Save</button>
       </div>
         </>
         )
@@ -109,13 +118,40 @@ class Project extends React.Component {
   }
 };
 
+// class Task extends React.component {
+//   constructor(props) {
+//     super (props);
+//     this.state = {
+//       Deadline : "",
+//       Title : "",
+//       Description : "",
+//     };
+//   }
+
+//   render () {
+//     return (
+//       <>
+//       <div className="page-wrap">
+//       <label className="input" for="date">Deadline: </label>
+//       <input className="input" type="date" name="date"></input>
+
+//       <label className="input" for="Description">Description: </label>
+//       <input type="text" className="input" name="Description"/>
+
+//       <label className="input" for="completed">Completed?</label>
+//       <input className="input" type="checkbox" name="completed"/>
+
+//       <button className="button" type="submit">Save</button>
+//       </div>
+//         </>
+//     )
+//   }
+// }
+
 class Container extends React.Component {
   constructor(props) {
     super (props);
     this.state = { apiResponse: "" };
-    this.state = {
-      //deadline: 
-    };
   }
   //the 2 methods below are from
   //https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c/
@@ -136,7 +172,7 @@ class Container extends React.Component {
       <legend>Project Management App</legend>
       <p>Sign up with an email to get started!</p>
       <p>{this.state.apiResponse}</p>
-      <p><button className = "newSignUp" onClick={() => {
+      <p><button className="button" onClick={() => {
         root.render(<Profile/>)
       }}>
             Sign Up
@@ -146,7 +182,6 @@ class Container extends React.Component {
   }
 
 }
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Container/>);

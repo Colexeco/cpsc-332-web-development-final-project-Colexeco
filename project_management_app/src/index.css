@@ -3,4 +3,16 @@
     flex-direction: column;
     margin:0 auto;
     width: 800px;
+    background-color: aqua;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.button {
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5%;
+}
+
+.input {
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5%;
 }

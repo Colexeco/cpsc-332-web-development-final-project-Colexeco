@@ -39,4 +39,16 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.listen(8080, function () {
+  console.log("Server listening on port " + 8080);
+})
+
+const mongoose = require("mongoose");
+
+const userSchema = new mongoose.Schema({
+  email: String,
+  password: String,
+  profilePhoto: Mixed,
+})
+
 module.exports = app;

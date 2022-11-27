@@ -6,7 +6,7 @@
     "start": "react-scripts start",
     "serverStart": "node app.js"
   },
-  "proxy" : "http://localhost:3000",
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",

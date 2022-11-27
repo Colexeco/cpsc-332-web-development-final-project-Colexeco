@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
@@ -9,8 +9,22 @@ class Profile extends React.Component{
       super (props);
       this.state = {
         showComponent: false,
+        email: "",
+        password: "",
       };
       this._newProfilePhotoButton = this._newProfilePhotoButton.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+      this.setState({email: event.target.email, password: event.target.password})
+    }
+
+    handleSubmit(event) {
+      console.log("User credentials have been submitted!");
+      //event.preventDefault();
+      root.render(<NewProject/>)
     }
 
     _newProfilePhotoButton() {
@@ -23,21 +37,18 @@ class Profile extends React.Component{
     return (
       <>
       <div className="page-wrap">
-      <form>
+      <form action="./credentials" method="POST" onSubmit={this.handleSubmit}>
       <div>
       <label htmlFor="Email">Email</label>
-      <input id="Email" type="text"/>
+      <input name="Email" id="Email" type="text" alue={this.state.email} onChange={this.handleChange}/>
       </div>
       <div>
       <label htmlFor="Password">Password</label>
-      <input id="Password" type="text"/>
+      <input name="Password" id="Password" type="text" value={this.state.password} onChange={this.handleChange}/>
       </div>
       <p>Upload a profile photo...</p>
-      <input type="file" accept="image/*" />
-      <input className="button" type="submit" onClick={ () => {
-        root.render(<NewProject/>)
-      }
-      }/>
+      <input name="profilePhoto" type="file" accept="image/*" />
+      <button id="submit" className="button" type="button" onClick={this.handleSubmit}>Submit</button>
       </form>
       </div>
       </>
@@ -126,7 +137,7 @@ class Container extends React.Component {
   //the 2 methods below are from
   //https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c/
   callAPI() {
-    fetch("http://localhost:9000/testAPI")
+    fetch("http://localhost:8080/testAPI")
         .then(res => res.text())
         .then(res => this.setState({ apiResponse: res }))
         .catch(err => err);

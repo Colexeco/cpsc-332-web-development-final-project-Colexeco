@@ -1,0 +1,65 @@
+<!-- based off GU CPSC 332 Example Form -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Node.js MongoDB Demo</title>
+    <link rel="icon" href="favicon.png">
+</head>
+<script>
+
+    window.addEventListener("DOMContentLoaded", () => {
+
+        taskButton = document.getElementById("task");
+        removeTask = document.getElementById("removeTask");
+        taskParagraph = document.getElementById("taskParagraph");
+        
+        taskButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        let divNode = document.createElement("div");
+        divNode.innerHTML = "<div id='taskDiv'><div><label for='title'>title: </label><input id=title type='text'></div><div><label for='description'>description: </label><input id=description type='text'></div><div><label for='deadline'>deadline: </label><input id=deadline type='date'></div><div><button id='saveTask'>Save Task</button></div></div>"
+        taskParagraph.appendChild(divNode);
+        });
+
+        removeTask.addEventListener("click", (event) => {
+        event.preventDefault();
+        task = document.getElementById("taskDiv");
+        task.parentNode.removeChild(task);
+        });
+
+    });//end of onload function
+</script>
+<body>
+    <h1>Hello, World! New web page, who is this?</h1>
+    
+    <form action="/show" method="POST">
+        <fieldset>
+            <legend>Feedback Form</legend>
+            <p>
+                <label for="first">Title:</label>
+                <input type="text" name="first" id="first" value="add a title here">
+            </p>
+
+            <p>
+                <label for="last">Description:</label>
+                <input type="text" name="last" id="last" value="add a description here">
+            </p>
+            <p>
+                <label for="deadline">Deadline:</label>
+                <input type="date" name="deadline" id="deadline">
+            </p>
+            <p id="taskParagraph">
+                <button id="task">Add task</button>
+                <button id="removeTask">Remove task</button>
+            </p>
+            <input type="submit" value="Create">
+        </fieldset>
+    </form>
+    <div class="navigation">
+        <button><a href="/show">All projects...</a></button>
+        <button><a href="/logout">Log Out</a></button>
+    </div>
+</body>
+
+</html>

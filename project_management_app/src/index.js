@@ -23,7 +23,7 @@ class Profile extends React.Component{
 
     handleSubmit(event) {
       console.log("User credentials have been submitted!");
-      //event.preventDefault();
+      event.preventDefault();
       root.render(<NewProject/>)
     }
 

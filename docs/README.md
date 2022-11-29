@@ -21,5 +21,6 @@ I used the following resources during this project:
 [https://stackoverflow.com/questions/33840150/onclick-doesnt-render-new-react-component](https://stackoverflow.com/questions/33840150/onclick-doesnt-render-new-react-component)  
 [https://www.skptricks.com/2018/06/append-or-prepend-html-using-reactjs.html](https://www.skptricks.com/2018/06/append-or-prepend-html-using-reactjs.html)  
 [https://www.mongodb.com/languages/mern-stack-tutorial](https://www.mongodb.com/languages/mern-stack-tutorial)  
-[https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c/](https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c)  
+[https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c/](https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c)
+[https://github.com/GUWebDevelopment/nodejs-mongoose-user-authentication-example](https://github.com/GUWebDevelopment/nodejs-mongoose-user-authentication-example)
 ### License

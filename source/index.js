@@ -36,12 +36,19 @@ const formSchema = new mongoose.Schema({
     deadline: { type: Date, default: Date.now },
 });
 
+const taskSchema = new mongoose.Schema({
+    first: String,
+    last: String,
+    deadline: { type: Date, default: Date.now },
+});
+
 //create the model for our form data using our schema
 //argument 1: uses/creates a MongoDB collection "formresults" -- makes string plural and lowercase
 //so... "FormResult" is transformed to "formresults" on the MongoDB side.
 //argument2: this is the schema you created above to be used with the MongoDB collection
 //best practice to CapitalCase your model and model strings
 const FormResult = mongoose.model("FormResult", formSchema);
+const TaskResult = mongoose.model("TaskResult", taskSchema);
 
 //used for our database connections
 const url = "mongodb://127.0.0.1:27017/"; //part of the database connection string

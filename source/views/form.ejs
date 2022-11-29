@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    <title>Node.js MongoDB Demo</title>
+    <title>New Project... </title>
     <link rel="icon" href="favicon.png">
 </head>
 <script>
@@ -18,8 +18,13 @@
         taskButton.addEventListener("click", (event) => {
         event.preventDefault();
         let divNode = document.createElement("div");
-        divNode.innerHTML = "<div id='taskDiv'><div><label for='title'>title: </label><input id=title type='text'></div><div><label for='description'>description: </label><input id=description type='text'></div><div><label for='deadline'>deadline: </label><input id=deadline type='date'></div><div><button id='saveTask'>Save Task</button></div></div>"
+        divNode.innerHTML = "<div id='taskDiv'><div><form id='task'><label for='title'>title: </label><input id=title type='text'></div><div><label for='description'>description: </label><input id=description type='text'></div><div><label for='deadline'>deadline: </label><input id=deadline type='date'></div><div><input type='submit' id='saveTask' value='Save Task'></input></form></div></div>"
         taskParagraph.appendChild(divNode);
+        
+            saveTask = document.getElementById("saveTask");
+            saveTask.addEventListener("click", (event) => {
+            event.preventDefault();
+            });
         });
 
         removeTask.addEventListener("click", (event) => {
@@ -31,11 +36,10 @@
     });//end of onload function
 </script>
 <body>
-    <h1>Hello, World! New web page, who is this?</h1>
     
     <form action="/show" method="POST">
         <fieldset>
-            <legend>Feedback Form</legend>
+            <legend>Create New Project</legend>
             <p>
                 <label for="first">Title:</label>
                 <input type="text" name="first" id="first" value="add a title here">

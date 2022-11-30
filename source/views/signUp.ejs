@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Create New Account</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .page-wrap {
+                background-color: black;
+                color: blue;
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: center;
+                border: "20px solid blue";
+            }
+
+            .signUp {
+                border-radius: 10%;
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body class="page-wrap">
+        <h1> Create a New Account... </h1>
+        <form action="/signUp" method="POST">
+            <fieldset>
+                <p>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" value="enter an email here">
+                    <!-- <span id="email-error">
+                    <% if(emailError.length > 0) { %>
+                    Error: <%= emailError %>
+                    <% } %>
+                    </span> -->
+                </p>
+                <p>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" value="asdf">
+                </p>
+                <p>
+                    <label for="passwordConfirmation">Password</label>
+                    <input type="password" name="passwordConfirmation" id="passwordConfirmation" value="asdf">
+                </p>
+                <input type="submit" value="Sign Up" class="signUp">
+            </fieldset>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Log In...</title>
+        <style>
+            .page-wrap {
+                background-color: black;
+                color: blue;
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: center;
+                border: "20px solid blue";
+            }
+
+            .button {
+                border-radius: 10%;
+                background-color: blue;
+            }
+
+            .signUp {
+                color: green;
+            }
+        </style>
+    </head>
+    <body class="page-wrap">
+        <form action="/login" method="POST" class="form">
+            <fieldset>
+                <legend>Log In to App...</legend>
+                <p>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" value="enter an email here...">
+                    <!-- <span id="email-error">
+                        <% if(emailError.length > 0) { %>
+                        Error: <%= emailError %>
+                        <% } %>
+                    </span> -->
+                </p>
+                <p>
+                    <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter a password" value="asdfg">
+                </p>
+
+                <p>Haven't created an account yet? <a href="/signUp" class="signUp">Sign Up</a></p>
+                <input type="submit" class="button" value="Log In">
+            </fieldset>
+        </form>
+    </body>
+</html>

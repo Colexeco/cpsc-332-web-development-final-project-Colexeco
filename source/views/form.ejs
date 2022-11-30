@@ -18,7 +18,7 @@
         taskButton.addEventListener("click", (event) => {
         event.preventDefault();
         let divNode = document.createElement("div");
-        divNode.innerHTML = "<div id='taskDiv'><div><form id='task' action='/show'><label for='title'>title: </label><input id=title type='text'></div><div><label for='description'>description: </label><input id=description type='text'></div><div><label for='deadline'>deadline: </label><input id=deadline type='date'></div><div><input type='submit' id='saveTask' value='Save Task'></input></form></div></div>"
+        divNode.innerHTML = "<div id='taskDiv'><div><label for='title'>title: </label><input id=title type='text'></div><div><label for='description'>description: </label><input id=description type='text'></div><div><label for='deadline'>deadline: </label><input id=deadline type='date'></div></div>"
         taskParagraph.appendChild(divNode);
         
             saveTask = document.getElementById("saveTask");

@@ -34,12 +34,11 @@ const formSchema = new mongoose.Schema({
     first: String,
     last: String,
     deadline: { type: Date, default: Date.now },
-});
-
-const taskSchema = new mongoose.Schema({
-    first: String,
-    last: String,
-    deadline: { type: Date, default: Date.now },
+    tasks: [{
+        title: String,
+        description: String,
+        deadline: {type: Date, default: Date.now },
+    }],
 });
 
 //create the model for our form data using our schema
@@ -48,11 +47,10 @@ const taskSchema = new mongoose.Schema({
 //argument2: this is the schema you created above to be used with the MongoDB collection
 //best practice to CapitalCase your model and model strings
 const FormResult = mongoose.model("FormResult", formSchema);
-const TaskResult = mongoose.model("TaskResult", taskSchema);
 
 //used for our database connections
 const url = "mongodb://127.0.0.1:27017/"; //part of the database connection string
-const DB_NAME = "testDB"; //database name
+const DB_NAME = "ProjectDB"; //database name
 
 //connecting to our database.
 //NOTE: for some reason localhost would not work for me but the localhost IP address worked.
@@ -178,6 +176,7 @@ app.post("/show", (req, res) => {
                 first: req.body.first,
                 last: req.body.last,
                 deadline: req.body.deadline,
+                tasks: req.body.tasks,
             });
 
         //Saving the model data to our database as configured above
@@ -246,8 +245,8 @@ app.route("/edit/:id")
                     //Build our object to pass on to our ejs to be rendered as HTML
                     let result = {
                         _id: id,
-                        title: results.title,
-                        description: results.description,
+                        first: results.first,
+                        last: results.last,
                         deadline: results.deadline,
                     };
 
@@ -275,8 +274,6 @@ app.route("/edit/:id")
             let first = req.body.first;
             let last = req.body.last;
             let check1 = req.body.check1;
-            let rating = req.body.rating;
-            let agree = req.body.agree;
 
             //using the updateOne method and where query
             FormResult
@@ -286,8 +283,6 @@ app.route("/edit/:id")
                         first: first,
                         last: last,
                         check1: check1,
-                        rating: rating,
-                        agree: agree
                     }
                 })
                 .exec(function (err, result) {

@@ -30,6 +30,8 @@
             <th>Title</th>
             <th>Description</th>
             <th>Deadline</th>
+            <th>Tasks</th>
+            <th>Edit/Delete</th>
         </tr>
         <% formResults.forEach(function(response) { //debugger; %>
         <tr>
@@ -41,6 +43,12 @@
             </td>
             <td id="check1">
                 <%= response.deadline %>
+            </td>
+            <td id="taskTitle"></td>
+                <% response.tasks.forEach(function(response) { //debugger; %>
+                    
+                        <%= response.task.title %>
+                    <% }); %>
             </td>
             <td>
                 <!-- Added for our UPDATE and DELETE parts of CRUD -->

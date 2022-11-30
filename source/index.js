@@ -129,7 +129,7 @@ app.route("/signUp")
                     }
                     res.render("signUp.ejs", errors);
                 } else {
-                    return res.redirect("/viewProjects");
+                    return res.redirect("/newProject");
                 }
             });
         }
@@ -151,3 +151,40 @@ app.route("/login")
             let temp = userCredentials.authenticate(userData, req, res);
         }
     });
+
+app.get("/newProject", (req, res) => {
+
+    if (req.session.userId) {
+        //authenticate before proceeding
+        validateSession(req.session.userId, res);
+        res.render("newProject.ejs");
+    } else { //not logged in
+        return res.redirect("/login");
+    }
+});
+
+function validateSession (_id, res) {
+    if (_id != "" && _id != undefined) {
+        //authenticate
+        userCredentials.findOne({
+            _id: _id
+        }).exec(function (err, user) {
+            if (err) {
+                return res.render("error.ejs", {
+                    errors: 2
+                });
+            } else if (!user) {
+                var err = new Error('User not found.');
+                err.status = 401;
+                //error
+                return res.render("error.ejs", {
+                    errors: 2
+                });
+            }
+            //authentication passed, give access
+        })
+    } else {
+        //redirect to log in
+        return res.redirect("/login");
+    }
+}

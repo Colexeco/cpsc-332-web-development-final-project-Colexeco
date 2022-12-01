@@ -83,7 +83,7 @@ UserSchema.statics.authenticate = function (userData, req, res) {
             }
             //if we get here, we did not hit an error...
             bcrypt.compare(userData.password, user.password, function (err, result) {
-                if (result === true) { //password hashes match
+                if (result == true) { //password hashes match
                     //set up session cookie
                     req.session.userId = user._id;
                     return res.render("newProject.ejs");
@@ -164,7 +164,7 @@ app.get("/newProject", (req, res) => {
 });
 
 //CREATE
-app.post("viewProjects.ejs", (req, res) => {
+app.post("/viewProjects", (req, res) => {
 
     if (req.session.userId) {
         //authenticate before proceeding
@@ -177,7 +177,7 @@ app.post("viewProjects.ejs", (req, res) => {
             {
                 title: req.body.title,
                 description: req.body.description,
-                completed: req.body.completed,
+                completed: req.body.completed == undefined ? false : true,
                 tasks: req.body.task,
             });
         //Saving model data for our database as configured above
@@ -188,9 +188,9 @@ app.post("viewProjects.ejs", (req, res) => {
                 }
                 console.log(`Success! Inserted data with _id: ${result._id} into the database`);
                 console.log(result._doc);
-                res.redirect("viewProjects");
+                res.redirect("/viewProjects");
             });
-            
+
     } else { //not logged in
         return res.redirect("/login");
     }

@@ -30,8 +30,34 @@
     </style>
     <body class="page-wrap">
         <h1>Project created successfully</h1>
-        <table>
-            
+        <table class="page-wrap">
+            <caption>View all projects here...</caption>
+            <tr>
+                <th>title</th>
+                <th>description</th>
+                <th>deadline</th>
+                <th>completed</th>
+                <th>tasks</th>
+            </tr>
+            <% projectResults.forEach(function(response) { %>
+            <tr>
+                <td id="title">
+                    <% response.title %>
+                </td>
+                <td id="description">
+                    <% response.description %>
+                </td>
+                <td id="deadline">
+                    <% response.deadline %>
+                </td>
+                <td id="completed">
+                    <% response.completed %>
+                </td>
+                <td id="tasks">
+                    <% response.tasks %>
+                </td>
+            </tr>
+            <% }); %>
         </table>
     </body>
 </html>

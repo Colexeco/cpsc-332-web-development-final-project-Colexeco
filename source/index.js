@@ -163,6 +163,58 @@ app.get("/newProject", (req, res) => {
     }
 });
 
+//CREATE
+app.post("viewProjects.ejs", (req, res) => {
+
+    if (req.session.userId) {
+        //authenticate before proceeding
+        validateSession(req.session.userId, res);
+
+        console.log("Form Data:");
+        console.log(req.body);
+
+        let result = projectResult(
+            {
+                title: req.body.title,
+                description: req.body.description,
+                completed: req.body.completed,
+                tasks: req.body.task,
+            });
+        //Saving model data for our database as configured above
+        result.save(
+            (err, result) => {
+                if (err) {
+                    return console.log("Error: " + err);
+                }
+                console.log(`Success! Inserted data with _id: ${result._id} into the database`);
+                console.log(result._doc);
+                res.redirect("viewProjects");
+            });
+            
+    } else { //not logged in
+        return res.redirect("/login");
+    }
+});
+
+//READ
+app.get("/viewProjects", (req, res) => {
+
+    if (req.session.userId) {
+        validateSession(req.session.userId, res);
+
+        projectResult.find(
+            {},
+            (err, results) => {
+                console.log(results)
+                res.render("viewProjects.ejs", {
+                    projectResults: results,
+                });
+            });
+    } else { //not logged in
+        return res.redirect("/login");
+    }
+});
+
 function validateSession (_id, res) {
     if (_id != "" && _id != undefined) {
         //authenticate

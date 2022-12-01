@@ -30,14 +30,14 @@
     <script>
         window.addEventListener("DOMContentLoaded", () => {
     
-            taskButton = document.getElementById("task");
+            taskButton = document.getElementById("addTask");
             removeTask = document.getElementById("removeTask");
             taskParagraph = document.getElementById("taskParagraph");
             
             taskButton.addEventListener("click", (event) => {
             event.preventDefault();
             let divNode = document.createElement("div");
-            divNode.innerHTML = "<div id='taskDiv'><div><label for='title'>title: </label><input id=title type='text'></div><div><label for='description'>description: </label><input id=description type='text'></div><div><label for='deadline'>deadline: </label><input id=deadline type='date'><div><label for='completed'>Completed?</label><input type='checkbox' name='completed' id='completed'></div></div></div>"
+            divNode.innerHTML = "<div id='task'><div><label for='title'>title: </label><input id=title type='text'></div><div><label for='description'>description: </label><input id=description type='text'></div><div><label for='deadline'>deadline: </label><input id=deadline type='date'><div><label for='completed'>Completed?</label><input type='checkbox' name='completed' id='completed'></div></div></div>"
             taskParagraph.appendChild(divNode);
             
                 saveTask = document.getElementById("saveTask");
@@ -56,32 +56,33 @@
     </script>
 </head>
 <body class="page-wrap">
-    <fieldset>
-        <legend>Create New Project</legend>
-        <p>
-            <label for="first">Title:</label>
-            <input type="text" name="first" id="first" value="add a title here">
-        </p>
+    <form action="/viewProjects" method="POST">
+        <fieldset>
+            <legend>Create New Project</legend>
+            <p>
+                <label for="first">Title:</label>
+                <input type="text" name="first" id="first" value="add a title here">
+            </p>
 
-        <p>
-            <label for="last">Description:</label>
-            <input type="text" name="last" id="last" value="add a description here">
-        </p>
-        <p>
-            <label for="deadline">Deadline:</label>
-            <input type="date" name="deadline" id="deadline">
-        </p>
-        <p>
-            <label for="completed">Completed?</label>
-            <input type="checkbox" name="completed" id="completed">
-        </p>
-        <p id="taskParagraph">
-            <button class="button" id="task">Add task</button>
-            <button class="button" id="removeTask">Remove task</button>
-        </p>
-        <input type="submit" class="button" value="Create">
-    </fieldset>
-</form>
+            <p>
+                <label for="last">Description:</label>
+                <input type="text" name="last" id="last" value="add a description here">
+            </p>
+            <p>
+                <label for="deadline">Deadline:</label>
+                <input type="date" name="deadline" id="deadline">
+            </p>
+            <p>
+                <label for="completed">Completed?</label>
+                <input type="checkbox" name="completed" id="completed">
+            </p>
+            <p id="taskParagraph">
+                <button class="button" id="addTask">Add task</button>
+                <button class="button" id="removeTask">Remove task</button>
+            </p>
+            <input type="submit" class="button" value="Create">
+        </fieldset>
+    </form>
 <div class="navigation">
     <button class="button"><a class="button" href="/viewProjects">All projects...</a></button>
     <button class="button"><a class="button" href="/logout">Log Out</a></button>

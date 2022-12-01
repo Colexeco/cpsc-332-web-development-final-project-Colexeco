@@ -178,7 +178,7 @@ app.post("/viewProjects", (req, res) => {
                 title: req.body.title,
                 description: req.body.description,
                 completed: req.body.completed == undefined ? false : true,
-                tasks: req.body.task,
+                tasks: req.body.tasks,
             });
         //Saving model data for our database as configured above
         result.save(
@@ -214,6 +214,70 @@ app.get("/viewProjects", (req, res) => {
         return res.redirect("/login");
     }
 });
+
+//UPDATE
+app.route("editProject/:id")
+    .get((req, res) => {
+        if (req.session.userId) {
+            validateSession(req.session.userId, res);
+
+            let id = req.params.id;
+
+            projectResult.findById(
+                id,
+                (err, results) => {
+                    console.log("Found result: ");
+                    console.log(results);
+
+                    let result = {
+                        _id: id,
+                        title: results.title,
+                        description: results.description,
+                        deadline: results.deadline,
+                        completed: results.completed,
+                        tasks: results.tasks,
+                    }
+
+                    res.render("editProject.ejs", {
+                        response: result
+                    });
+                });
+        } else { //not logged in
+            return res.redirect("/login");
+        }
+    })
+    .post(function (req, res) {
+        if (req.session.userId) {
+            validateSession(req.session, res);
+
+            let id = req.params.id;
+
+            let title = req.body.title;
+            let description = req.body.description;
+            let deadline = req.body.deadline;
+            let completed = req.body.completed;
+            let tasks = req.body.tasks;
+
+            projectResult
+                .where({_id: id })
+                .updateOne({
+                    $set: {
+                        title: title,
+                        description: description,
+                        deadline: deadline,
+                        completed: completed,
+                        tasks: tasks,
+                    }
+                })
+                .exec(function (err, result) {
+                    if (err) return res.send(err);
+                    res.redirect("/viewProjects");
+                    console.log(`Successfully updated ${result.modifiedCount} record`);
+                });
+        } else { //not logged in
+            return res.redirect("/login");
+        }
+    });
 
 function validateSession (_id, res) {
     if (_id != "" && _id != undefined) {

@@ -9,18 +9,26 @@
     <style>
         .page-wrap {
             background-color: black;
-            color: blue;
+            color: green;
             font-family: Arial, Helvetica, sans-serif;
             text-align: center;
             border: "20px solid blue";
             }
 
+        .table {
+            border-radius: 10%;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
         .button {
             border-radius: 10%;
-            background-color: blue;
+            background-color: green;
             color: black;
             text-decoration: none;
-            width: 120px;
+            width: 200px;
             padding: 10px;
             margin: 10px 0;
             border: none;
@@ -30,7 +38,7 @@
     </style>
     <body class="page-wrap">
         <h1>Project created successfully</h1>
-        <table class="page-wrap">
+        <table class="table">
             <caption>View all projects here...</caption>
             <tr>
                 <th>title</th>
@@ -59,5 +67,9 @@
             </tr>
             <% }); %>
         </table>
+        <div class="page-wrap">
+            <button class="button"><a class="button" href="/newProject">Create a new project</a></button>
+            <button class="button"><a class="button" href="/logout">Log Out</a></button>
+        </div>
     </body>
 </html>

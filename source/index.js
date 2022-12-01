@@ -303,7 +303,7 @@ function validateSession (_id, res) {
         //redirect to log in
         return res.redirect("/login");
     }
-
+}
 //DELETE
 app.route("/delete/:id")
     .get((req, res) => {
@@ -341,5 +341,15 @@ app.route("/delete/:id")
         }
     });
 
-
-}
+    //end session
+    app.get('/logout', function (req, res, next) {
+        if (req.session) {
+            req.session.destroy( function (err) {
+                if (err) {
+                    return next(err);
+                } else {
+                    return res.redirect('/');
+                }
+            });
+        }
+    });

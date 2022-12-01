@@ -303,4 +303,43 @@ function validateSession (_id, res) {
         //redirect to log in
         return res.redirect("/login");
     }
+
+//DELETE
+app.route("/delete/:id")
+    .get((req, res) => {
+        if (req.session.userId) {
+            validateSession(req.session.userId, res);
+
+            let id = req.params.id;
+
+            projectResult.findById(
+                id,
+                (err, results) => {
+                    console.log(results)
+
+                    let result = {
+                        _id: id,
+                        title: results.title,
+                        description: results.description,
+                        deadline: results.deadline,
+                        completed: results.completed,
+                        tasks: results.tasks,
+                    };
+                    console.log("We are about to delete: " +JSON.stringify(result));
+                });
+
+            projectResult.deleteOne(
+                { _id: id },
+                (err, result) => {
+                    console.log(result);
+
+                    console.log(`${result.deletedCount} record deleted`);
+                    res.redirect("/viewProjects");
+                })
+        } else {
+            return res.redirect("login");
+        }
+    });
+
+
 }

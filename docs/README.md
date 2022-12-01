@@ -7,7 +7,7 @@ This is a lightweight project management web app with an emphasis on progress tr
 docs contains report, project_management_app contains the front end, backend contains backend
 
 ### Installation
-This project requires npm on the machine which it is running. Navigate to both the front and back end directories and run `npm install` within both of them upon cloning this repository to install all required dependencies. Then run `npm start` in both directories to start the application in your default browser.
+This project requires npm on the machine which it is running. Go the "source" folder, run `npm install`, and run index.js and navigate to localhost:8080 in your favorite web browser to use the application.
 
 ### Usage
 Anyone can use this app.

@@ -66,7 +66,7 @@ UserSchema.pre('save', function (next) {
 //authenticate user credentials against database
 UserSchema.statics.authenticate = function (userData, req, res) {
     userCredentials.findOne({
-        username: userData.email
+        email: userData.email
     })
         .exec(function (err, user) {
             if (err) {

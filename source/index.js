@@ -28,7 +28,7 @@ const projectSchema = new mongoose.Schema({
     }]
 });
 
-const projectResult = mongoose.model("ProjectResult", projectSchema);
+const projectResult = mongoose.model("projectResult", projectSchema);
 
 const url = "mongodb://127.0.0.1:27017/";
 const DB_NAME = "projectDB";
@@ -170,16 +170,18 @@ app.post("/viewProjects", (req, res) => {
         //authenticate before proceeding
         validateSession(req.session.userId, res);
 
-        console.log("Form Data:");
+        console.log("Project Data:");
         console.log(req.body);
 
         let result = projectResult(
             {
                 title: req.body.title,
                 description: req.body.description,
+                deadline: req.body.deadline,
                 completed: req.body.completed == undefined ? false : true,
                 tasks: req.body.tasks,
             });
+    
         //Saving model data for our database as configured above
         result.save(
             (err, result) => {
@@ -205,7 +207,7 @@ app.get("/viewProjects", (req, res) => {
         projectResult.find(
             {},
             (err, results) => {
-                console.log(results)
+                console.log("Results: " + results)
                 res.render("viewProjects.ejs", {
                     projectResults: results,
                 });

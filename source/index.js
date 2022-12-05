@@ -110,6 +110,19 @@ app.get("/", function(req, res) {
     return res.redirect("/login");
 });
 
+//for logging out of app
+app.get("/logout", function(req, res, next) {
+    if (req.session) {
+        req.session.destroy(function (err) {
+            if (err) {
+                return next(err);
+            } else {
+                return res.redirect('/');
+            }
+        });
+    }
+});
+
 app.route("/signUp")
     .get((req, res) => {
         let errors = {

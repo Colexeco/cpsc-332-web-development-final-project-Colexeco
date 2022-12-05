@@ -4,9 +4,28 @@
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-    
+        <h2>Edit Project</h2>
+            <% //debugger; %>
+        <form action="/edit/<%= response._id %>" method="POST">
+            <table>
+                <td id="title">
+                    <%= reponse.title %>
+                </td>
+                <td id="description">
+                    <%= reponse.description %>
+                </td>
+                <td id="deadline">
+                    <%= reponse.deadline %>
+                </td>
+                <td id="completed">
+                    <%= reponse.completed %>
+                </td>
+                <td id="tasks">
+                    <%= reponse.tasks %>
+                </td>
+            </table>
+        </form>
     </body>
 </html>

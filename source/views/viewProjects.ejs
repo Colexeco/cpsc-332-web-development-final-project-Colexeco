@@ -4,7 +4,6 @@
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
     </head>
     <style>
         .page-wrap {
@@ -45,26 +44,30 @@
                 <th>description</th>
                 <th>deadline</th>
                 <th>completed</th>
-                <!-- <th>tasks</th> -->
+                <th>tasks</th>
             </tr>
             <% projectResults.forEach(function(response) { //debugger; %>
                 <% console.log(response) %>
             <tr>
-                <td id="title">
+                <td id="title" class="table">
                     <% response.title %>
                 </td>
-                <td id="description">
+                <td id="description"class="table">
                     <% response.description %>
                 </td>
-                <td id="deadline">
+                <td id="deadline" class="table">
                     <% response.deadline %>
                 </td>
-                <td id="completed">
+                <td id="completed" class="table">
                     <% response.completed %>
                 </td>
-                <!-- <td id="tasks">
+                <td id="tasks" class="table">
                     <% response.tasks %>
-                </td> -->
+                </td>
+                <td class="table">
+                    <a href="/edit/<%= response._id %>">Edit</a>
+                    <a href="/delete/<%= response._id %>">Delete</a>
+                </td>
             </tr>
             <% }); %>
         </table>

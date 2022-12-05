@@ -41,6 +41,7 @@
             
             taskButton.addEventListener("click", (event) => {
                 numTasks++;
+                document.getElementById("numtasks").value = numTasks;
                 event.preventDefault();
                 let divNode = document.createElement("div");
                 divNode.innerHTML = `
@@ -72,6 +73,7 @@
     
             removeTask.addEventListener("click", (event) => {
                 numTasks--;
+                document.getElementById("numtasks").value = numTasks;
                 event.preventDefault();
                 task = document.getElementById("task");
                 task.parentNode.removeChild(task);

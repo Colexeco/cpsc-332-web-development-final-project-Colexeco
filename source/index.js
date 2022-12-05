@@ -15,6 +15,8 @@ app.listen(PORT, function () {
 
 const mongoose = require("mongoose");
 
+const sanitize = require("mongo-sanitize");
+
 const projectSchema = new mongoose.Schema({
     title: String,
     description: String,
@@ -224,6 +226,8 @@ app.route("editProject/:id")
             validateSession(req.session.userId, res);
 
             let id = req.params.id;
+
+            id = sanitize(id);
 
             projectResult.findById(
                 id,

@@ -50,19 +50,19 @@
                 <% console.log(response) %>
             <tr>
                 <td id="title" class="table">
-                    <% response.title %>
+                    <%= response.title %>
                 </td>
                 <td id="description"class="table">
-                    <% response.description %>
+                    <%= response.description %>
                 </td>
                 <td id="deadline" class="table">
-                    <% response.deadline %>
+                    <%= response.deadline %>
                 </td>
                 <td id="completed" class="table">
-                    <% response.completed %>
+                    <%= response.completed %>
                 </td>
                 <td id="tasks" class="table">
-                    <% response.tasks %>
+                    <%= response.tasks %>
                 </td>
                 <td class="table">
                     <a href="/edit/<%= response._id %>">Edit</a>

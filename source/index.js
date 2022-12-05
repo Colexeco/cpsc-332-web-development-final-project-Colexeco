@@ -245,7 +245,14 @@ app.route("editProject/:id")
             projectResult.findById(
                 id,
                 (err, results) => {
-                    console.log("Found result: ");
+
+                    if (err) {
+                        return res.render("error.ejs", {
+                            errors: err
+                        });
+                    }
+
+                    console.log("Found project! ");
                     console.log(results);
 
                     let result = {

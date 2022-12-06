@@ -12,14 +12,13 @@
             font-family: Arial, Helvetica, sans-serif;
             text-align: center;
             border: "20px solid blue";
-            }
+        }
 
         .table {
-            border-radius: 10%;
-            text-decoration: none;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 12px;
+            border: 2px solid green;
         }
 
         .button {
@@ -65,8 +64,8 @@
                     <%= response.tasks %>
                 </td>
                 <td class="table">
-                    <a href="/edit/<%= response._id %>">Edit</a>
-                    <a href="/delete/<%= response._id %>">Delete</a>
+                    <a href="/edit/<%= response._id %>" class="button">Edit</a>
+                    <a href="/delete/<%= response._id %>" class="button">Delete</a>
                 </td>
             </tr>
             <% }); %>

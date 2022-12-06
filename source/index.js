@@ -233,7 +233,7 @@ app.get("/viewProjects", (req, res) => {
 });
 
 //UPDATE
-app.route("editProject/:id")
+app.route("/edit/:id")
     .get((req, res) => {
         if (req.session.userId) {
             validateSession(req.session.userId, res);

@@ -4,28 +4,76 @@
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .page-wrap {
+            background-color: black;
+            color: green;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            border: "20px solid blue";
+            }
+
+            .button {
+            border-radius: 10%;
+            background-color: green;
+            color: black;
+            text-decoration: none;
+            width: 250px;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .table {
+            margin-left: auto;
+            margin-right: auto;
+            padding: 12px;
+            border: 2px solid green;
+            }
+
+            .edit {
+                width: 400px;
+            }
+
+        </style>
     </head>
-    <body>
+    <body class="page-wrap">
         <h2>Edit Project</h2>
             <% //debugger; %>
         <form action="/edit/<%= response._id %>" method="POST">
-            <table>
-                <td id="title">
-                    <%= reponse.title %>
-                </td>
-                <td id="description">
-                    <%= reponse.description %>
-                </td>
-                <td id="deadline">
-                    <%= reponse.deadline %>
-                </td>
-                <td id="completed">
-                    <%= reponse.completed %>
-                </td>
-                <td id="tasks">
-                    <%= reponse.tasks %>
-                </td>
+            <table class="table">
+                <tr>
+                    <td id="title">
+                        <input class="edit" type="text" value="<%= response.title %>" name="title">
+                    </td>
+                </tr>
+                <tr>
+                    <td id="description">
+                        <input class="edit" type="text" value="<%= response.description %>" name="description">
+                    </td>
+                </tr>
+                <tr>
+                    <td id="deadline">
+                        <input class="edit" type="text" value="<%= response.deadline %>" name="deadline">
+                    </td>
+                </tr>
+                <tr>
+                    <td id="completed">
+                        <input class="edit" type="text" value="<%= response.completed %>" name="deadline">
+                    </td>
+                </tr>
+                <tr>
+                    <td id="tasks">
+                        <input class="edit" type="text" value="<%= response.tasks %>" name="tasks">
+                    </td>
+                </tr>
             </table>
+            <p>
+                <button class="button"><a href="/viewProject" class="button">All Projects (No changes saved)</a></button>
+                <button class="button" type="submit">Edit (Save Changes)</button>
+            </p>
         </form>
     </body>
 </html>

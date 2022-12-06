@@ -61,7 +61,8 @@
                     <%= response.completed %>
                 </td>
                 <td id="tasks" class="table">
-                    <%= response.tasks %>
+                    <%= response.numtasks %>
+                    <!-- <% response.tasks.forEach(function(response) {}) %> -->
                 </td>
                 <td class="table">
                     <a href="/edit/<%= response._id %>" class="button">Edit</a>

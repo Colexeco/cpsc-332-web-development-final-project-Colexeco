@@ -358,7 +358,7 @@ app.route("/edit/:id")
                     date: "Please provide a valid date",
                 });
             
-            console.log("Validation Passes: " + validation.passes() + "Validation Fails: " + validation.fails());
+            console.log("Validation Passes: " + validation.passes() + " Validation Fails: " + validation.fails());
 
             if (validation.fails()) {
                 let errorsList = {

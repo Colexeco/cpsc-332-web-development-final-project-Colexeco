@@ -46,21 +46,25 @@
             <table class="table">
                 <tr>
                     <td id="title">
-                        <input class="edit" type="text" value="<%= response.title %>" name="title">
+                        <label for="title">Title</label>
+                        <input id="title" class="edit" type="text" value="<%= response.title %>" name="title">
                     </td>
                 </tr>
                 <tr>
                     <td id="description">
-                        <input class="edit" type="text" value="<%= response.description %>" name="description">
+                        <label for="description">Description</label>
+                        <input id="description" class="edit" type="text" value="<%= response.description %>" name="description">
                     </td>
                 </tr>
                 <tr>
                     <td id="deadline">
-                        <input class="edit" type="text" value="<%= response.deadline %>" name="deadline">
+                        <label for="deadline">Deadline</label>
+                        <input id="deadline" class="edit" type="text" value="<%= response.deadline %>" name="deadline">
                     </td>
                 </tr>
                 <tr>
                     <td id="completed">
+                        
                         <input class="edit" type="text" value="<%= response.completed %>" name="deadline">
                     </td>
                 </tr>

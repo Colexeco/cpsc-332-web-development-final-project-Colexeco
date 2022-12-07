@@ -28,7 +28,6 @@ var projectRules = {
     title: "required|string",
     description: "required|string",
     deadline: "required|date",
-    completed: "boolean",
 }
 
 const projectSchema = new mongoose.Schema({
@@ -243,30 +242,69 @@ app.post("/viewProjects", (req, res) => {
             }
         }
 
-        let result = projectResult(
-            {
-                title: req.body.title,
-                description: req.body.description,
-                deadline: req.body.deadline,
-                completed: req.body.completed == undefined ? false : true,
-                numtasks: req.body.numtasks,
-                tasks: tasksArr,
-            });
-    
-        //Saving model data for our database as configured above
-        result.save(
-            (err, result) => {
-                if (err) {
-                    return console.log("Error: " + err);
-                }
-                console.log(`Success! Inserted data with _id: ${result._id} into the database`);
-                console.log(result._doc);
-                res.redirect("/viewProjects");
-            });
+        // let title = req.body.title;
+        // let description = req.body.description;
+        // let deadline = req.body.deadline;
+        // let completed = req.body.completed;
+        // let tasks = req.body.tasks;
 
+        // //create an object it's possible to validate on
+        // let data = {
+        //     title: title, 
+        //     description: description,
+        //     deadline: deadline,
+        //     completed: completed,
+        // }
+
+        // //validate
+        // let validation = new Validator(data, projectRules,
+        //     {
+        //         required: "A valid :attribute is required",
+        //         boolean: ":attribute must be true/false",
+        //         email: "A valid email is required",
+        //         date: "Please provide a valid date",
+        //     });
+        
+        // console.log("Validation Passes: " + validation.passes() + " Validation Fails: " + validation.fails());
+
+        // if (validation.fails()) {
+        //     let errorsList = {
+        //         title: validation.errors.first("title"),
+        //         description: validation.errors.first("description"),
+        //         deadline: validation.errors.first("deadline"),
+        //         completed: validation.errors.first("completed")
+        //     };
+
+        //     res.render("error.ejs", {
+        //         errors: 3,
+        //         errors: errorsList,
+        //     });
+        // } else {
+            let result = projectResult(
+                {
+                    title: req.body.title,
+                    description: req.body.description,
+                    deadline: req.body.deadline,
+                    completed: req.body.completed == undefined ? false : true,
+                    numtasks: req.body.numtasks,
+                    tasks: tasksArr,
+                });
+        
+            //Saving model data for our database as configured above
+            result.save(
+                (err, result) => {
+                    if (err) {
+                        return console.log("Error: " + err);
+                    }
+                    console.log(`Success! Inserted data with _id: ${result._id} into the database`);
+                    console.log(result._doc);
+                    res.redirect("/viewProjects");
+                });
+        //}
     } else { //not logged in
         return res.redirect("/login");
     }
+
 });
 
 //READ

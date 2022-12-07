@@ -1,23 +1,72 @@
-<% if(errors == 1) { %>
-<h1> No results found</h1>
-
-<% } else if (errors == 2) { %>
-
-<h1>Generic Error</h1>
-
-<% } else { %>
-<h1> Data Failed Validation</h1>
-<ul>
-    <li>
-        <%= errors.title %>
-    </li>
-    <li>
-        <%= errors.description %>
-    </li>
-    <li>
-        <%= errors.completed %>
-    </li>
-    <li>
-        <%= errors.tasks %>
-    </li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .page-wrap {
+            background-color: black;
+            color: green;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            border: "20px solid blue";
+            }
+        
+        .button {
+            border-radius: 10%;
+            background-color: green;
+            color: black;
+            text-decoration: none;
+            width: 200px;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="page-wrap">
+    <% if(errors == 1) { %>
+        <h1> No results found</h1>
+        
+        <% } else if (errors == 2) { %>
+        
+        <h1>Generic Error</h1>
+        
+        <% } else if (errors == 3 ) { %>
+        <h1> Data Failed Validation</h1>
+        <ul>
+                <% if(errors.title){ %>
+                <li>
+                    <%= errors.title %>
+                </li>
+                <% } %>
+                <% if(errors.description){ %>
+                <li>
+                    <%= errors.description %>
+                </li>
+                <% } %>
+                <% if(errors.deadline){ %>
+                <li>
+                    <%= errors.deadline %>
+                </li>
+                <% } %>
+                <% if(errors.completed){ %>
+                <li>
+                    <%= errors.completed %>
+                </li>
+                <% } %>
+        </ul>
+        <% } else { %>
+        <h1>Data Failed Validation</h1>
+        <h2>Error:</h2>
+        <p>
+            <%= errors %>
+        </p>
+            <% } %>
+        <a class="button" href="/viewProjects">Back</a>
+</body>
+</html>

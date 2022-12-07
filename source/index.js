@@ -17,6 +17,20 @@ const mongoose = require("mongoose");
 
 const sanitize = require("mongo-sanitize");
 
+const Validator = require("validatorjs");
+
+var userRules = {
+    email: "required|email",
+    password: "required|string|min:6|confirmed"
+}
+
+var projectRules = {
+    title: "required|string",
+    description: "required|string",
+    deadline: "required|date",
+    completed: "boolean",
+}
+
 const projectSchema = new mongoose.Schema({
     title: String,
     description: String,
@@ -326,7 +340,41 @@ app.route("/edit/:id")
             let completed = req.body.completed;
             let tasks = req.body.tasks;
 
-            projectResult
+            //create an object it's possible to validate on
+            let data = {
+                title: title, 
+                description: description,
+                deadline: deadline,
+                completed: completed,
+                tasks: tasks
+            }
+
+            //validate
+            let validation = new Validator(data, projectRules,
+                {
+                    required: "A valid :attribute is required",
+                    boolean: ":attribute must be true/false",
+                    email: "A valid email is required",
+                    date: "Please provide a valid date",
+                });
+            
+            console.log("Validation Passes: " + validation.passes() + "Validation Fails: " + validation.fails());
+
+            if (validation.fails()) {
+                let errorsList = {
+                    title: validation.errors.first("title"),
+                    description: validation.errors.first("description"),
+                    deadline: validation.errors.first("deadline"),
+                    completed: validation.errors.first("completed")
+                };
+
+                res.render("error.ejs", {
+                    errors: 3,
+                    errors: errorsList,
+                });
+            } else {
+
+                projectResult
                 .where({_id: id })
                 .updateOne({
                     $set: {
@@ -342,6 +390,7 @@ app.route("/edit/:id")
                     res.redirect("/viewProjects");
                     console.log(`Successfully updated ${result.modifiedCount} record`);
                 });
+            }
         } else { //not logged in
             return res.redirect("/login");
         }

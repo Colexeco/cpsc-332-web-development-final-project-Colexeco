@@ -38,13 +38,15 @@
             <fieldset>
                 <legend>Log In to App...</legend>
                 <p>
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" placeholder="enter an email here...">
-                    <!-- <span id="email-error">
-                        <% if(emailError.length > 0) { %>
-                        Error: <%= emailError %>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="enter a username here...">
+                </p>
+                <p>
+                    <span id="username-error">
+                        <% if(usernameError.length > 0) { %>
+                        Error: <%= usernameError %>
                         <% } %>
-                    </span> -->
+                    </span>
                 </p>
                 <p>
                     <label for="password">Password</label>

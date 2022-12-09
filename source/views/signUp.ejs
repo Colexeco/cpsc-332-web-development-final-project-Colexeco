@@ -33,21 +33,21 @@
         <form action="/signUp" method="POST">
             <fieldset>
                 <p>
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" value="enter an email here">
-                    <!-- <span id="email-error">
-                    <% if(emailError.length > 0) { %>
-                    Error: <%= emailError %>
-                    <% } %>
-                    </span> -->
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="enter a username here...">
                 </p>
+                <span id="email-error">
+                    <% if(usernameError.length > 0) { %>
+                    <p>Error: <%= usernameError %></p>
+                    <% } %>
+                    </span>
                 <p>
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" value="asdf">
+                    <input type="password" name="password" id="password" placeholder="enter a password here...">
                 </p>
                 <p>
                     <label for="passwordConfirmation">Password</label>
-                    <input type="password" name="passwordConfirmation" id="passwordConfirmation" value="asdf">
+                    <input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="enter a password here...">
                 </p>
                 <input type="submit" value="Sign Up" class="signUp">
             </fieldset>

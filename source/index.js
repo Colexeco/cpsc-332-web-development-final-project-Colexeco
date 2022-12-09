@@ -20,7 +20,7 @@ const sanitize = require("mongo-sanitize");
 const Validator = require("validatorjs");
 
 var userRules = {
-    email: "required|email",
+    username: "required|username",
     password: "required|string|min:6|confirmed"
 }
 
@@ -55,7 +55,7 @@ const bcrypt = require("bcrypt");
 
 //schema for project users
 var UserSchema = new mongoose.Schema({
-    email: {
+    username: {
         type: String,
         unique: true,
         required: true,
@@ -82,7 +82,7 @@ UserSchema.pre('save', function (next) {
 //authenticate user credentials against database
 UserSchema.statics.authenticate = function (userData, req, res) {
     userCredentials.findOne({
-        email: userData.email
+        username: userData.username
     })
         .exec(function (err, user) {
             if (err) {
@@ -140,21 +140,21 @@ app.get("/logout", function(req, res, next) {
 app.route("/signUp")
     .get((req, res) => {
         let errors = {
-            emailError: "",
+            usernameError: "",
         }
         res.render("signUp.ejs", errors);
     })
     .post((req, res) => {
-        if (req.body.email && req.body.password && req.body.passwordConfirmation) {
+        if (req.body.username && req.body.password && req.body.passwordConfirmation) {
             var userData = userCredentials({
-                email: req.body.email,
+                username: req.body.username,
                 password: req.body.password,
             });
 
             userData.save(function (err, user) {
                 if (err) {
                     let errors = {
-                        emailError: "Invalid email"
+                        usernameError: "Error: " + err
                     }
                     res.render("signUp.ejs", errors);
                 } else {
@@ -167,14 +167,14 @@ app.route("/signUp")
 app.route("/login")
     .get((req, res) => {
         let errors = {
-            emailError: ""
+            usernameError: ""
         }
         res.render("login.ejs", errors);
     })
     .post((req, res) => {
-        if (req.body.email && req.body.password) {
+        if (req.body.username && req.body.password) {
             var userData = {
-                email: req.body.email,
+                username: req.body.username,
                 password: req.body.password,
             }
             let temp = userCredentials.authenticate(userData, req, res);
@@ -261,7 +261,6 @@ app.post("/viewProjects", (req, res) => {
         //     {
         //         required: "A valid :attribute is required",
         //         boolean: ":attribute must be true/false",
-        //         email: "A valid email is required",
         //         date: "Please provide a valid date",
         //     });
         
@@ -334,7 +333,7 @@ app.route("/edit/:id")
 
             let id = req.params.id;
 
-            id = sanitize(id);
+            id = sanitize(id);//sanitization
 
             projectResult.findById(
                 id,
@@ -372,6 +371,8 @@ app.route("/edit/:id")
 
             let id = req.params.id;
 
+            id = sanitize(id);//sanitization
+
             let title = req.body.title;
             let description = req.body.description;
             let deadline = req.body.deadline;
@@ -392,7 +393,6 @@ app.route("/edit/:id")
                 {
                     required: "A valid :attribute is required",
                     boolean: ":attribute must be true/false",
-                    email: "A valid email is required",
                     date: "Please provide a valid date",
                 });
             
@@ -467,6 +467,8 @@ app.route("/delete/:id")
 
             let id = req.params.id;
 
+            id = sanitize(id);//sanitization
+
             projectResult.findById(
                 id,
                 (err, results) => {
@@ -495,6 +497,40 @@ app.route("/delete/:id")
             return res.redirect("login");
         }
     });
+
+//view tasks
+app.route("/viewTasks/:id")
+    .get((req, res) => {
+        if (req.session.userId) {
+            validateSession(req.session.userId, res);
+
+            let id = req.params.id;
+
+            id = sanitize(id);
+
+            projectResult.findById(
+                id,
+                (err, results) => {
+                    console.log(results)
+
+                    let result = {
+                        _id: id,
+                        title: results.title,
+                        description: results.description,
+                        deadline: results.deadline,
+                        completed: results.completed,
+                        tasks: results.tasks,
+                    };
+                    console.log("We are about to view tasks for: " +JSON.stringify(result));
+
+                    res.render("viewTasks.ejs", {
+                        response: result,
+                    });
+                });
+        } else {
+            return res.redirect("login");
+        }
+    })
 
     //end session
     app.get('/logout', function (req, res, next) {

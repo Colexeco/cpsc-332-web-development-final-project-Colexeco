@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .page-wrap {
+            background-color: black;
+            color: green;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            border: "20px solid blue";
+            }
+
+            .button {
+            border-radius: 10%;
+            background-color: green;
+            color: black;
+            text-decoration: none;
+            width: 250px;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .table {
+            margin-left: auto;
+            margin-right: auto;
+            padding: 12px;
+            border: 2px solid green;
+            }
+
+        .edit {
+            width: 400px;
+        }
+
+        </style>
+    </head>
+    <body class="page-wrap">
+        <table class="table">
+            <caption>Viewing tasks for project <%= response.title %>...</caption>
+            <tr>
+                <th>title</th>
+                <th>description</th>
+                <th>deadline</th>
+                <th>completed</th>
+            </tr>
+            <tr>
+                <% response.tasks.forEach(function(response) { //debugger %>
+                    <td><%= response.tasks %></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                <% }); %>
+            </tr>
+        </table>
+    </body>
+</html>

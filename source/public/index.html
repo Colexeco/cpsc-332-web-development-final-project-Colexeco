@@ -1,14 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style></style>
-        <title>Project Management App</title>
-    </head>
-    <body>
-    <h1>Project Management Application</h1>
-    <a href="/login">Click here to get started!</a>
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPSC 332 Final Project</title>
+    <style>
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>CPSC 332 Final Project Presentation</h1>
+        <h2>Project Management App</h2>
+        <h1>Evan Shoemaker</h2>
+            <h3 id="date">
+                <script>
+                    document.getElementById("date").innerHTML = new Date().toDateString();
+                </script>
+            </h3>
+            <p>I made a very simple project managment app. Users can create projects with titles, descriptions, deadlines, 
+                mark them as completed, and assign tasks to them. They can view all of their created projects in one page. They 
+                can also edit those projects to reflect progress.
+            </p>
+    </div>
+    <div class="requirements-list">
+        <h1>Functional Requirements:</h1>
+        <ol>
+            <li>
+                <p>Users must be able to log in and out of the application using a username and password (front)
+                </p>
+                <input type="checkbox">
+            </li>
+            <li>
+                <p>Users must be able to log back in with previous name and password from database (back)</p>
+                <input type="checkbox">
+            </li>
+            <li>
+                <p>Users must be able to create project/task entries (front)</p>
+                <input type="checkbox">
+            </li>
+            <li>
+                <p>Users must be able to retrieve previously created project/task entries (back)</p>
+                <input type="checkbox">
+            </li>
+            <li>
+                <p>Users must be able to add deadlines to projects/tasks (front)</p>
+                <input type="checkbox">
+            </li>
+            <li>
+                <p>Users must be able to retrieve previously created deadlines of projects/tasks (back)</p>
+                <input type="checkbox">
+            </li>
+            <li>
+                <p>Users must be able fill out descriptions for projects/tasks (front)</p>
+                <input type="checkbox">
+            </li>
+            <li>
+                <p>Users must be able to retrieve previously created descriptions for projects/tasks (back)</p>
+                <input type="checkbox">
+            </li>
+            <li>
+                <p>Users must be able to modify projects/tasks to reflect progress (front)</p>
+                <input type="checkbox">
+            </li>
+            <li>
+                <p>Users must be able to retrieve past modifications to view progress (back)</p>
+                <input type="checkbox">
+            </li>
+        </ol>
+    </div>
+</body>
+
 </html>

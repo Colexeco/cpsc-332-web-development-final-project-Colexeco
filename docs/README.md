@@ -23,4 +23,3 @@ I used the following resources during this project:
 [https://www.mongodb.com/languages/mern-stack-tutorial](https://www.mongodb.com/languages/mern-stack-tutorial)  
 [https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c/](https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c)  
 [https://github.com/GUWebDevelopment/nodejs-mongoose-user-authentication-example](https://github.com/GUWebDevelopment/nodejs-mongoose-user-authentication-example)
-### License

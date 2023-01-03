@@ -7,7 +7,7 @@ This is a lightweight project management web app with an emphasis on progress tr
 docs contains reports, source contains the application
 
 ### Installation
-This project requires npm on the machine which it is running. Go the "source" folder, run `npm install`, and run index.js and navigate to localhost:8080 in your favorite web browser to use the application.
+This project requires npm and [MongoDB](https://www.mongodb.com/docs/manual/installation/) on the machine which it is running. Go the "source" folder, run `npm install`, and run index.js and navigate to localhost:8080 in your favorite web browser to use the application.
 
 ### Usage
 Anyone can use this app.
